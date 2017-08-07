@@ -1,0 +1,15 @@
+{
+  "name": "play-nine",
+  "version": "1.0.0",
+  "description": "Small react app from Pluralsight Tutorial",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "reopsitory": {
+    "type": "git",
+    "url": "https://github.com/helloye/PlayNine"
+  },
+  "author": "Ye Paing",
+  "license": "ISC"
+}
