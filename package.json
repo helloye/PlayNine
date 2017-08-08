@@ -14,5 +14,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "reopsitory": {
+    "type": "git",
+    "url": "https://github.com/helloye/PlayNine"
+  },
+  "author": "Ye Paing",
+  "license": "ISC"
 }
