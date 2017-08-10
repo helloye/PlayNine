@@ -5,6 +5,7 @@ class Game extends Component {
     return (
       <div>
         <h1>Hello Game!</h1>
+          //TODO: Add game components
       </div>
     )
   }
