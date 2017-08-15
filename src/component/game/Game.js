@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
+import Star from '../star/Star';
+import Answer from "../answer/Answer";
+import Button from "../button/Button";
 
 class Game extends Component {
   render() {
     return (
-      <div>
-        <h1>Hello Game!</h1>
-          //TODO: Add game components
+      <div className="container">
+        <h1>Play Nine</h1>
+        <div className="row">
+          <Star/>
+          <Button/>
+          <Answer/>
+        </div>
       </div>
-    )
+    );
   }
 }
 
