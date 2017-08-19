@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import logo from '../../logo.svg';
 import './App.css';
+import 'font-awesome/css/font-awesome.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 import Game from '../game/Game';
 
