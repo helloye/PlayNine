@@ -9,6 +9,10 @@ body {
   font-size: 24px !important;
 }
 
+#app {
+  align-content: center;
+}
+
 span {
   display: inline-block;
   margin: 0.5em;
@@ -18,4 +22,16 @@ span {
   font-size: 30px;
   cursor: pointer;
   width: 35px;
+}
+
+.selected {
+  background-color: #eee;
+  color: #ddd;
+  cursor: not-allowed;
+}
+
+.used {
+  background-color: #aaddaa;
+  color: #99bb99;
+  cursor: not-allowed;
 }
