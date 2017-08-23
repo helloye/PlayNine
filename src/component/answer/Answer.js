@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 
 class Answer extends Component {
-    render() {
+  constructor(props){
+    super(props);
+  }
+
+  render() {
         return (
             <div className="col-md-5">
-              <span>5</span>
-              <span>6</span>
+              {this.props.selectedNumbers.map((number, i) =>
+                <span key={i}>{number}</span>
+              )}
             </div>
         );
     }

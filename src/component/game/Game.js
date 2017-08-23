@@ -5,6 +5,9 @@ import Button from "../button/Button";
 import Numbers from "../numbers/Numbers";
 
 class Game extends Component {
+  state = {
+    selectedNumbers: [2, 4]
+  };
   render() {
     return (
       <div className="container">
@@ -13,10 +16,10 @@ class Game extends Component {
         <div className="row">
           <Star/>
           <Button/>
-          <Answer/>
+          <Answer selectedNumbers={this.state.selectedNumbers}/>
         </div>
       <br/>
-      <Numbers/>
+      <Numbers selectedNumbers={this.state.selectedNumbers}/>
       </div>
     );
   }
