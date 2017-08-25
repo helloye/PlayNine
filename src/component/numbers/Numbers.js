@@ -4,9 +4,13 @@ import _ from 'lodash';
 class Numbers extends Component {
   arrayOfNums = _.range(1, 10);
 
-  static isNumberSelected(number){
-    //TODO: Check props.selectedNumbers here.
-    return "selected";
+  isNumberSelected(number){
+    if(this.props.usedNumbers.indexOf(number) >= 0) {
+      return "used";
+    }
+    if(this.props.selectedNumbers.indexOf(number) >= 0) {
+      return "selected";
+    }
   }
 
   render() {
@@ -14,7 +18,10 @@ class Numbers extends Component {
       <div className="card text-center">
         <div>
           {this.arrayOfNums.map((number, i) =>
-            <span key={i} className={this.isNumberSelected(number)}>{number}</span>
+            <span key={i}
+                  className={this.isNumberSelected(number)}
+                  onClick={() => this.props.handleSelectNumber(number)}
+            >{number}</span>
           )}
         </div>
       </div>

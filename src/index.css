@@ -13,6 +13,20 @@ body {
   align-content: center;
 }
 
+#refresh-btn {
+  margin-left: 25px;
+}
+
+#refresh-btn i {
+  position: relative;
+  margin-right: 10px;
+}
+
+#done-frame {
+  position: relative;
+  top: -20px;
+}
+
 span {
   display: inline-block;
   margin: 0.5em;
@@ -34,4 +48,14 @@ span {
   background-color: #aaddaa;
   color: #99bb99;
   cursor: not-allowed;
+}
+
+.card {
+  top: 70px;
+  border: solid;
+  position: relative;
+}
+
+.game-row {
+  height: 70px;
 }

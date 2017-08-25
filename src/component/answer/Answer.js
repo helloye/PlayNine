@@ -9,7 +9,10 @@ class Answer extends Component {
         return (
             <div className="col-md-5">
               {this.props.selectedNumbers.map((number, i) =>
-                <span key={i}>{number}</span>
+                <span
+                  key={i}
+                  onClick={() => this.props.handleSelectNumber(number)}
+                >{number}</span>
               )}
             </div>
         );
