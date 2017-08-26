@@ -19,7 +19,7 @@ class Game extends Component {
   };
 
   selectNum = (clickedNum) => {
-    if(this.state.selectedNumbers.indexOf(clickedNum) >= 0) return;
+    if(this.state.selectedNumbers.indexOf(clickedNum) >= 0 || this.state.usedNumbers.indexOf(clickedNum) >= 0) return;
     this.setState(prevState => ({
       answerIsCorrect: null,
       selectedNumbers: prevState.selectedNumbers.concat(clickedNum)
@@ -39,7 +39,8 @@ class Game extends Component {
 
   checkAnswer = () => {
     const isAnswerCorrect = (this.state.numOfStars === this.getSumOfSelected());
-    this.setState({ answerIsCorrect: isAnswerCorrect })
+    this.setState({ answerIsCorrect: isAnswerCorrect });
+    this.updateDoneState();
   };
 
   acceptAnswer = () => {
@@ -61,7 +62,7 @@ class Game extends Component {
     }, this.updateDoneState())
   };
 
-  possibleCombinationSum = ({arr, n}) => {
+  possibleCombinationSum = (arr, n) => {
     if (arr.indexOf(n) >= 0) { return true; }
     if (arr[0] > n) { return false; }
     if (arr[arr.length - 1] > n) {
@@ -79,8 +80,8 @@ class Game extends Component {
     return false;
   };
 
-  possibleSolution = ({numOfStars, usedNumbers}) => {
-    if(!usedNumbers) return true; //meaning no used numbers yet. game goes on...
+  possibleSolution = (numOfStars, usedNumbers) => {
+    if(usedNumbers.length===0) return true; //meaning no used numbers yet. game goes on...
     const possibleNums = _.range(1,10).filter(number =>
       usedNumbers.indexOf(number) === -1
     );
@@ -89,14 +90,21 @@ class Game extends Component {
   };
 
   updateDoneState = () => {
-    this.setState(prevState => {
-      if(prevState.usedNumbers.length === 9){
-        return { doneStatus: 'Done, Nice!!'}
-      }else if(this.state.numOfRedraws <= 0 && !this.possibleSolution(this.state.numOfStars, this.state.usedNumbers)){
-        return { doneStatus: 'Game Over!'}
-      }
-    });
+    if(this.state.usedNumbers.length === 9){
+      this.setState({
+        doneStatus: 'Done, Nice!!'
+      })
+    } else if (this.state.numOfRedraws <= 0 && !this.possibleSolution(this.state.numOfStars, this.state.usedNumbers)){
+      this.setState({
+        doneStatus: 'Game Over!'
+      })
+    }
   };
+
+  componentDidUpdate(){
+    if(this.state.doneStatus !== null)
+      this.updateDoneState();
+  }
 
   render() {
     const { numOfStars, selectedNumbers, answerIsCorrect, usedNumbers, numOfRedraws, doneStatus } = this.state;
@@ -113,6 +121,7 @@ class Game extends Component {
             handleAcceptAnswer={this.acceptAnswer}
             handleRedraw={this.redraw}
             redrawsLeft={numOfRedraws}
+            updateDoneState={this.updateDoneState}
           />
           <Answer
             selectedNumbers={selectedNumbers}
