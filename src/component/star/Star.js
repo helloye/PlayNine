@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 
 class Star extends Component {
+    componentDidUpdate() {
+      if(!this.props.doneStatus)
+        this.props.updateDoneState();
+    }
+
     render() {
         return (
             <div className="col-md-5">

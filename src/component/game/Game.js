@@ -101,11 +101,6 @@ class Game extends Component {
     }
   };
 
-  componentDidUpdate(){
-    if(this.state.doneStatus !== null)
-      this.updateDoneState();
-  }
-
   render() {
     const { numOfStars, selectedNumbers, answerIsCorrect, usedNumbers, numOfRedraws, doneStatus } = this.state;
     return (
@@ -113,7 +108,11 @@ class Game extends Component {
         <h1>Play Nine</h1>
         <hr />
         <div className="game-row">
-          <Star numOfStars={numOfStars}/>
+          <Star
+            numOfStars={numOfStars}
+            doneStatus={doneStatus}
+            updateDoneState={this.updateDoneState}
+          />
           <Button
             selectedNumbers={selectedNumbers}
             answerIsCorrect={answerIsCorrect}
